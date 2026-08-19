@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashy - Le jeu de réflexe qui cultive toute la famille !</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              flashy: {
+                yellow: '#FFDD00',
+                purple: '#6C5CE7',
+                pink: '#FD79A8',
+                blue: '#0984E3',
+                dark: '#2D3436',
+                light: '#F8F9FA'
+              }
+            },
+            fontFamily: {
+              heading: ['Fredoka', 'sans-serif'],
+              body: ['Plus Jakarta Sans', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      h1, h2, h3, .font-heading {
+        font-family: 'Fredoka', sans-serif;
+      }
+      .card-shadow {
+        box-shadow: 0 10px 30px -5px rgba(108, 92, 231, 0.2);
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+      }
+      .video-overlay {
+        background: radial-gradient(circle, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.68) 100%);
+      }
+      .glass-panel {
+        background: rgba(255,255,255,0.10);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255,255,255,0.20);
+        box-shadow: 0 30px 80px rgba(15, 23, 42, 0.28);
+      }
+      .premium-ring {
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.14), 0 20px 45px rgba(108, 92, 231, 0.25);
+      }
+      .floating-badge {
+        animation: floatBadge 4s ease-in-out infinite;
+      }
+      .play-button {
+        box-shadow: 0 18px 40px rgba(255, 221, 0, 0.5);
+      }
+      @keyframes floatBadge {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+    </style>
+</head>
+<body class="bg-flashy-light text-flashy-dark antialiased selection:bg-flashy-yellow selection:text-flashy-dark">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group" aria-label="Flashy logo">
+                <div class="relative w-12 h-12 rounded-2xl flex items-center justify-center shadow-md group-hover:rotate-6 transition-transform overflow-hidden border-2 border-[#f4c84d] bg-gradient-to-br from-[#ffd84d] via-[#ffb949] to-[#ff8f3c]">
+                    <span class="text-2xl drop-shadow-sm">⚡</span>
+                </div>
+                <div class="flex items-center leading-none">
+                    <span class="font-heading text-[2.1rem] font-bold tracking-[-0.08em] bg-gradient-to-r from-[#ff4ba8] via-[#ff78c8] to-[#ffbf45] bg-clip-text text-transparent drop-shadow-[0_2px_0_rgba(0,0,0,0.08)]">
+                        Flashy
+                    </span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+                <a href="#concept" class="hover:text-flashy-purple transition-colors">Le Concept</a>
+                <a href="#editions" class="hover:text-flashy-purple transition-colors">Les Éditions</a>
+                <a href="#pedagogie" class="hover:text-flashy-purple transition-colors">Pédagogie</a>
+                <a href="#avis" class="hover:text-flashy-purple transition-colors">Avis</a>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="flex items-center gap-4">
+                <a href="#editions" class="bg-flashy-yellow hover:bg-yellow-400 text-flashy-dark font-heading font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                    Acheter le jeu
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION WITH VIDEO BACKGROUND -->
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
+        <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80" class="absolute inset-0 w-full h-full object-cover z-0 scale-105">
+            <source src="videos/accueil.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+
+        <div class="absolute inset-0 video-overlay z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#140d2d]/85 via-[#140d2d]/55 to-[#140d2d]/25 z-10"></div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 lg:py-16">
+            <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-center">
+                <div class="text-white text-center lg:text-left">
+                    <span class="inline-flex items-center gap-2 bg-flashy-purple/90 text-white font-heading font-semibold text-sm sm:text-base px-4 py-1.5 rounded-full mb-6 backdrop-blur-md shadow-lg border border-white/20">
+                        <span>✨</span>
+                        Le jeu d'observation n°1 à visée éducative !
+                    </span>
+
+                    <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[0.95] mb-6 drop-shadow-md">
+                        Le jeu de réflexe qui <span class="text-flashy-yellow underline decoration-wavy decoration-flashy-pink">cultive</span> toute la famille !
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-100 max-w-xl lg:max-w-2xl mb-10 font-medium leading-relaxed drop-shadow">
+                        Observez vos cartes, découvrez l'unique symbole commun et criez-le en premier ! Apprenez les drapeaux, les monuments et la culture religieuse en vous amusant.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
+                        <a href="#editions" class="w-full sm:w-auto bg-flashy-yellow hover:bg-yellow-400 text-flashy-dark font-heading text-lg font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all text-center">
+                            🛒 Commander mon jeu (dès 14,90€)
+                        </a>
+                        <a href="#concept" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-heading text-lg font-semibold px-8 py-4 rounded-full border border-white/30 transition-all text-center">
+                            ⚡ Voir la règle du jeu
+                        </a>
+                    </div>
+
+                    <div class="mt-12 grid grid-cols-3 gap-4 max-w-lg bg-black/30 backdrop-blur-md p-4 rounded-2xl border border-white/10 text-center shadow-2xl">
+                        <div>
+                            <div class="font-heading text-2xl font-bold text-flashy-yellow">2 à 8</div>
+                            <div class="text-xs text-gray-200">Joueurs</div>
+                        </div>
+                        <div class="border-x border-white/20">
+                            <div class="font-heading text-2xl font-bold text-flashy-yellow">15 min</div>
+                            <div class="text-xs text-gray-200">Par partie</div>
+                        </div>
+                        <div>
+                            <div class="font-heading text-2xl font-bold text-flashy-yellow">Dès 6 ans</div>
+                            <div class="text-xs text-gray-200">Pour tous</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mx-auto w-full max-w-md lg:max-w-lg">
+                    <div class="floating-badge absolute -top-5 -left-4 sm:-left-6 z-30 bg-white text-flashy-dark font-heading font-bold px-4 py-2 rounded-full shadow-lg border border-gray-100">
+                        +1500 familles convaincues
+                    </div>
+
+                    <div class="glass-panel premium-ring rounded-[32px] p-4 sm:p-5">
+                        <div class="relative overflow-hidden rounded-[26px] border border-white/15 bg-slate-900/40">
+                            <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" class="h-[360px] sm:h-[420px] w-full object-cover">
+                                <source src="videos/accueil.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#140d2d]/80 via-transparent to-[#140d2d]/20"></div>
+                            <button class="play-button absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-flashy-yellow text-flashy-dark w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white/40">
+                                ▶
+                            </button>
+                        </div>
+
+                        <div class="mt-5 grid grid-cols-3 gap-3 text-center">
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10">
+                                <div class="font-heading text-xl font-bold text-flashy-yellow">4.9/5</div>
+                                <div class="text-[11px] text-gray-200 uppercase tracking-wide">Avis</div>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10">
+                                <div class="font-heading text-xl font-bold text-flashy-yellow">55</div>
+                                <div class="text-[11px] text-gray-200 uppercase tracking-wide">Cartes</div>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10">
+                                <div class="font-heading text-xl font-bold text-flashy-yellow">6+</div>
+                                <div class="text-[11px] text-gray-200 uppercase tracking-wide">Ans</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION LE CONCEPT (3 ÉTAPES) -->
+    <section id="concept" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-3xl sm:text-5xl font-bold text-flashy-dark mb-4">
+                    Comment jouer à <span class="text-flashy-purple">Flashy</span> ?
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    Une mécanique simple et universelle : entre 2 cartes, il y a toujours **un seul et unique symbole identique**. À vous de le repérer !
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-flashy-light p-8 rounded-3xl border border-gray-100 card-shadow text-center relative group hover:border-flashy-purple/30 transition-all">
+                    <div class="w-16 h-16 bg-flashy-purple text-white font-heading text-2xl font-bold rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        1
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-3">1. OBSERVEZ</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Chaque joueur retourne une carte ronde simultanément. Ouvrez grand vos yeux !
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-flashy-light p-8 rounded-3xl border border-gray-100 card-shadow text-center relative group hover:border-flashy-yellow/50 transition-all">
+                    <div class="w-16 h-16 bg-flashy-yellow text-flashy-dark font-heading text-2xl font-bold rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        2
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-3">2. TROUVEZ</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Repérez la paire identique : le même drapeau, la même statue ou le même symbole sacré.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-flashy-light p-8 rounded-3xl border border-gray-100 card-shadow text-center relative group hover:border-flashy-pink/30 transition-all">
+                    <div class="w-16 h-16 bg-flashy-pink text-white font-heading text-2xl font-bold rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        3
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-3">3. NOMMEZ & GAGNEZ !</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Soyez le plus rapide à nommer l'élément à voix haute pour poser votre carte et remporter la manche !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION NOS ÉDITIONS (PRODUITS) -->
+    <section id="editions" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-flashy-purple font-heading font-semibold text-sm uppercase tracking-widest">Nos Thématiques</span>
+                <h2 class="font-heading text-3xl sm:text-5xl font-bold text-flashy-dark mt-2">
+                    Choisissez votre thématique
+                </h2>
+                <p class="text-gray-600 text-lg mt-3">
+                    Des boîtes pensées pour enrichir la culture générale de toute la famille.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Produit 1 : Drapeaux d'Europe -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 card-shadow card-hover transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 h-56 flex items-center justify-center relative p-6">
+                            <span class="text-7xl">🇪🇺</span>
+                            <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">
+                                Best-seller
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-heading text-2xl font-bold mb-2 text-flashy-dark">Drapeaux d'Europe</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                Retrouvez 50+ drapeaux et capitales européennes. Parfait pour réviser la géographie en rigolant.
+                            </p>
+                            <div class="flex items-center gap-2 text-xs font-semibold text-gray-500 mb-6">
+                                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-lg">Géographie</span>
+                                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-lg">55 Cartes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100">
+                        <div>
+                            <span class="text-2xl font-bold font-heading text-flashy-dark">14,90 €</span>
+                        </div>
+                        <button class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produit 2 : Monuments du Monde -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 card-shadow card-hover transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-br from-amber-400 to-orange-500 h-56 flex items-center justify-center relative p-6">
+                            <span class="text-7xl">🏛️</span>
+                            <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">
+                                Populaire
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-heading text-2xl font-bold mb-2 text-flashy-dark">Monuments du Monde</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                De la Tour Eiffel à la Grande Muraille ! Un voyage autour du patrimoine mondial et de l'architecture.
+                            </p>
+                            <div class="flex items-center gap-2 text-xs font-semibold text-gray-500 mb-6">
+                                <span class="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-lg">Histoire & Art</span>
+                                <span class="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-lg">55 Cartes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100">
+                        <div>
+                            <span class="text-2xl font-bold font-heading text-flashy-dark">14,90 €</span>
+                        </div>
+                        <button class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produit 3 : Symboles Chrétiens -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 card-shadow card-hover transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-br from-purple-500 to-pink-500 h-56 flex items-center justify-center relative p-6">
+                            <span class="text-7xl">🕊️</span>
+                            <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">
+                                Éveil à la foi
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-heading text-2xl font-bold mb-2 text-flashy-dark">Symboles Chrétiens</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                Une édition inédite pour découvrir les objets sacrés, fêtes et symboles de la tradition chrétienne.
+                            </p>
+                            <div class="flex items-center gap-2 text-xs font-semibold text-gray-500 mb-6">
+                                <span class="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-lg">Culture & Foi</span>
+                                <span class="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-lg">55 Cartes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100">
+                        <div>
+                            <span class="text-2xl font-bold font-heading text-flashy-dark">14,90 €</span>
+                        </div>
+                        <button class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PÉDAGOGIE & VALEURS -->
+    <section id="pedagogie" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-flashy-pink font-heading font-semibold text-sm uppercase tracking-widest">Pourquoi choisir Flashy ?</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-bold text-flashy-dark mt-2 mb-6">
+                        Un outil idéal pour les écoles, le catéchisme et les familles.
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Conçu avec l'aide d'enseignants et d'éducateurs, **Flashy** combine la stimulation visuelle de la rapidité avec l'acquisition naturelle de connaissances.
+                    </p>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-sm mt-1">✓</div>
+                            <div>
+                                <strong class="text-flashy-dark">Développement de l'attention :</strong> Stimule la concentration, la perception visuelle et les réflexes.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-sm mt-1">✓</div>
+                            <div>
+                                <strong class="text-flashy-dark">Apprentissage sans effort :</strong> On retient l'image et le nom du symbole instantanément au fil des parties.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-sm mt-1">✓</div>
+                            <div>
+                                <strong class="text-flashy-dark">Format nomade :</strong> Boîte métallique résistante à emporter partout (vacances, voiture, classe).
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-flashy-yellow/20 p-8 rounded-3xl border border-flashy-yellow/40 relative">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm mb-4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="text-2xl">👩‍🏫</span>
+                            <div>
+                                <h4 class="font-bold text-flashy-dark">Valérie D.</h4>
+                                <p class="text-xs text-gray-500">Enseignante en CM1</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-sm">
+                            « J'utilise l'édition Drapeaux d'Europe en classe. Les élèves adorent et retiennent les capitales en deux semaines à peine ! »
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="text-2xl">🙏</span>
+                            <div>
+                                <h4 class="font-bold text-flashy-dark">Père Thomas</h4>
+                                <p class="text-xs text-gray-500">Animateur d'éveil à la foi</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-sm">
+                            « L'édition Symboles Chrétiens est une merveille pour rendre vivante la culture religieuse auprès des plus jeunes. »
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-flashy-dark text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-flashy-yellow rounded-xl flex items-center justify-center font-heading text-lg font-bold text-flashy-dark">⚡</div>
+                        <span class="font-heading text-2xl font-bold">FLASHY</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Le jeu d'observation et de rapidité éducatif qui réunit toutes les générations.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 text-flashy-yellow">Navigation</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#concept" class="hover:text-white transition-colors">Le Concept</a></li>
+                        <li><a href="#editions" class="hover:text-white transition-colors">Nos Éditions</a></li>
+                        <li><a href="#pedagogie" class="hover:text-white transition-colors">Espace Enseignants</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 text-flashy-yellow">Mentions</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Mentions Légales</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">CGV</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 text-flashy-yellow">Restons en contact</h4>
+                    <p class="text-gray-400 text-sm mb-3">Inscrivez-vous pour recevoir des fiches de jeux à imprimer :</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Votre email" class="bg-gray-800 text-white text-sm px-4 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-flashy-yellow w-full">
+                        <button type="submit" class="bg-flashy-yellow text-flashy-dark font-bold px-4 py-2 rounded-xl hover:bg-yellow-400 transition-colors">OK</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2026 Flashy - Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
