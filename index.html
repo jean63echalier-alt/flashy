@@ -66,6 +66,330 @@
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-8px); }
       }
+
+      /* STYLES MINI-JEU FLASHY */
+      .demo-section {
+        padding: 4rem 1.5rem;
+        background-color: #f8fafc;
+        text-align: center;
+      }
+      .demo-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .demo-badge {
+        display: inline-block;
+        background-color: #fef3c7;
+        color: #d97706;
+        font-weight: 600;
+        padding: 0.375rem 0.875rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        margin-bottom: 0.75rem;
+      }
+      .demo-header h2 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+      }
+      .demo-header p {
+        color: #64748b;
+        font-size: 1.125rem;
+        margin-bottom: 2rem;
+      }
+      .game-board {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .card {
+        width: 220px;
+        height: 220px;
+        background: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        border: 4px solid #e2e8f0;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+      .card:hover {
+        border-color: #cbd5e1;
+      }
+      .symbol-btn {
+        position: absolute;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 2.2rem;
+        line-height: 1;
+        padding: 8px;
+        border-radius: 50%;
+        user-select: none;
+        transition: transform 0.15s ease, background-color 0.15s ease;
+      }
+      .symbol-btn:hover {
+        transform: scale(1.25) !important;
+        background-color: rgba(241, 245, 249, 0.8);
+      }
+      .symbol-btn:active {
+        transform: scale(0.95) !important;
+      }
+      .game-feedback {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 0.75rem 1.25rem;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      #feedback-text {
+        font-weight: 600;
+        color: #334155;
+        margin: 0;
+      }
+      .score-board {
+        font-weight: 700;
+        color: #d97706;
+      }
+      .pulse-success {
+        animation: pulseSuccess 0.4s ease;
+      }
+      .shake-error {
+        animation: shakeError 0.4s ease;
+      }
+      @keyframes pulseSuccess {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); border-color: #22c55e; }
+        100% { transform: scale(1); }
+      }
+      @keyframes shakeError {
+        0%, 100% { transform: translateX(0); }
+        20%, 60% { transform: translateX(-6px); }
+        40%, 80% { transform: translateX(6px); }
+      }
+      @media (max-width: 640px) {
+        .game-board {
+          flex-direction: column;
+        }
+        .card {
+          width: 180px;
+          height: 180px;
+        }
+        .game-feedback {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+
+      /* STYLES PANIER / CHECKOUT */
+      .cart-icon-btn {
+        position: relative;
+      }
+      .cart-badge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: #FD79A8;
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 800;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        line-height: 1;
+        transition: transform 0.15s ease;
+      }
+      .cart-badge.pop {
+        animation: cartBadgePop 0.35s ease;
+      }
+      @keyframes cartBadgePop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.4); }
+        100% { transform: scale(1); }
+      }
+      .cart-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.5);
+        backdrop-filter: blur(2px);
+        z-index: 90;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+      .cart-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .cart-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 420px;
+        background: #ffffff;
+        z-index: 91;
+        box-shadow: -20px 0 60px rgba(15, 23, 42, 0.25);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .cart-drawer.open {
+        transform: translateX(0);
+      }
+      .cart-drawer-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .cart-drawer-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.25rem 1.5rem;
+      }
+      .cart-drawer-footer {
+        padding: 1.25rem 1.5rem 1.5rem;
+        border-top: 1px solid #f1f5f9;
+      }
+      .cart-line {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid #f8fafc;
+      }
+      .cart-line-emoji {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        flex-shrink: 0;
+      }
+      .cart-qty-stepper {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 9999px;
+        padding: 0.2rem 0.5rem;
+      }
+      .cart-qty-stepper button {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #6C5CE7;
+        cursor: pointer;
+      }
+      .cart-remove-btn {
+        color: #cbd5e1;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: color 0.15s ease;
+      }
+      .cart-remove-btn:hover {
+        color: #dc2626;
+      }
+      .cart-empty {
+        text-align: center;
+        color: #94a3b8;
+        padding: 3rem 1rem;
+      }
+      .cart-upsell {
+        background: #fef3c7;
+        border: 1px solid #fde68a;
+        color: #92400e;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      .cart-upsell:hover {
+        background: #fde68a;
+      }
+      .cart-pay-line {
+        font-size: 0.75rem;
+        color: #6C5CE7;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        margin-left: auto;
+      }
+      .stripe-pending-note {
+        font-size: 0.7rem;
+        color: #94a3b8;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+
+      /* REASSURANCE BADGES */
+      .reassurance-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+      .reassurance-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #e2e8f0;
+      }
+
+      /* PACK BANNER */
+      .pack-banner {
+        margin-top: 3rem;
+        border-radius: 28px;
+        background: linear-gradient(120deg, #6C5CE7 0%, #a06cf7 50%, #FD79A8 100%);
+        padding: 2px;
+        box-shadow: 0 20px 45px rgba(108, 92, 231, 0.3);
+      }
+      .pack-banner-inner {
+        background: #ffffff;
+        border-radius: 26px;
+        padding: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+      @media (max-width: 640px) {
+        .cart-drawer {
+          max-width: 100%;
+        }
+        .pack-banner-inner {
+          padding: 1.75rem;
+        }
+      }
     </style>
 </head>
 <body class="bg-flashy-light text-flashy-dark antialiased selection:bg-flashy-yellow selection:text-flashy-dark">
@@ -95,12 +419,43 @@
 
             <!-- CTA Button -->
             <div class="flex items-center gap-4">
+                <button type="button" onclick="Cart.open()" aria-label="Ouvrir le panier" class="cart-icon-btn w-11 h-11 rounded-full bg-flashy-light hover:bg-gray-200 flex items-center justify-center text-xl transition-colors">
+                    🛒
+                    <span id="cart-count-badge" class="cart-badge" style="display:none;">0</span>
+                </button>
                 <a href="#editions" class="bg-flashy-yellow hover:bg-yellow-400 text-flashy-dark font-heading font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
                     Acheter le jeu
                 </a>
             </div>
         </div>
     </nav>
+
+    <!-- PANIER : OVERLAY + DRAWER -->
+    <div id="cart-overlay" class="cart-overlay" onclick="Cart.close()"></div>
+    <aside id="cart-drawer" class="cart-drawer" aria-label="Panier">
+        <div class="cart-drawer-header">
+            <h3 class="font-heading text-xl font-bold text-flashy-dark">🛒 Mon panier</h3>
+            <button type="button" onclick="Cart.close()" aria-label="Fermer le panier" class="w-9 h-9 rounded-full hover:bg-gray-100 flex items-center justify-center text-xl text-gray-500">✕</button>
+        </div>
+        <div id="cart-drawer-body" class="cart-drawer-body">
+            <!-- rempli dynamiquement par Cart.render() -->
+        </div>
+        <div class="cart-drawer-footer">
+            <div id="cart-upsell-slot"></div>
+            <div class="flex items-center justify-between mb-4">
+                <span class="font-semibold text-gray-600">Sous-total</span>
+                <span id="cart-subtotal" class="font-heading text-2xl font-bold text-flashy-dark">0,00 €</span>
+            </div>
+            <button id="cart-checkout-btn" type="button" onclick="Cart.checkout()" class="w-full bg-flashy-yellow hover:bg-yellow-400 text-flashy-dark font-heading text-lg font-bold py-3.5 rounded-full shadow-lg hover:scale-[1.02] transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100">
+                Passer la commande
+            </button>
+            <p id="cart-checkout-note" class="stripe-pending-note" style="display:none;"></p>
+            <div class="reassurance-badges justify-center mt-4" style="color:#64748b;">
+                <span class="reassurance-badge" style="color:#64748b;">🔒 Paiement sécurisé</span>
+                <span class="reassurance-badge" style="color:#64748b;">🚚 Sous 48h</span>
+            </div>
+        </div>
+    </aside>
 
     <!-- HERO SECTION WITH VIDEO BACKGROUND -->
     <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
@@ -135,6 +490,12 @@
                         <a href="#concept" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-heading text-lg font-semibold px-8 py-4 rounded-full border border-white/30 transition-all text-center">
                             ⚡ Voir la règle du jeu
                         </a>
+                    </div>
+
+                    <div class="reassurance-badges justify-center lg:justify-start">
+                        <span class="reassurance-badge">🔒 Paiement sécurisé</span>
+                        <span class="reassurance-badge">🚚 Expédition sous 48h</span>
+                        <span class="reassurance-badge">🎁 Livraison offerte dès 2 jeux</span>
                     </div>
 
                     <div class="mt-12 grid grid-cols-3 gap-4 max-w-lg bg-black/30 backdrop-blur-md p-4 rounded-2xl border border-white/10 text-center shadow-2xl">
@@ -238,6 +599,25 @@
         </div>
     </section>
 
+    <!-- SECTION MINI-JEU INTERACTIF -->
+    <section id="demo-game" class="demo-section">
+      <div class="demo-container">
+        <div class="demo-header">
+          <span class="demo-badge">✨ Mini-démo interactive</span>
+          <h2>Trouvez le symbole commun !</h2>
+          <p>Comme dans le vrai jeu, un seul symbole est identique entre les deux cartes. Cliquez dessus le plus vite possible !</p>
+        </div>
+        <div class="game-board">
+          <div class="card" id="card-1"></div>
+          <div class="card" id="card-2"></div>
+        </div>
+        <div class="game-feedback" id="game-feedback">
+          <p id="feedback-text">Trouvez la paire !</p>
+          <div class="score-board">Score : <span id="score-count">0</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION NOS ÉDITIONS (PRODUITS) -->
     <section id="editions" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -277,7 +657,7 @@
                         <div>
                             <span class="text-2xl font-bold font-heading text-flashy-dark">14,90 €</span>
                         </div>
-                        <button class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
+                        <button type="button" onclick="Cart.add('drapeaux')" class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
                             Ajouter au panier
                         </button>
                     </div>
@@ -307,7 +687,7 @@
                         <div>
                             <span class="text-2xl font-bold font-heading text-flashy-dark">14,90 €</span>
                         </div>
-                        <button class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
+                        <button type="button" onclick="Cart.add('monuments')" class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
                             Ajouter au panier
                         </button>
                     </div>
@@ -337,12 +717,34 @@
                         <div>
                             <span class="text-2xl font-bold font-heading text-flashy-dark">14,90 €</span>
                         </div>
-                        <button class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
+                        <button type="button" onclick="Cart.add('symboles')" class="bg-flashy-purple hover:bg-indigo-700 text-white font-heading font-bold px-5 py-2.5 rounded-full transition-colors">
                             Ajouter au panier
                         </button>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- OFFRE PACK INTÉGRAL -->
+            <div class="pack-banner">
+                <div class="pack-banner-inner">
+                    <div class="flex items-center gap-5">
+                        <span class="text-6xl">🎁</span>
+                        <div>
+                            <span class="inline-block bg-flashy-purple/10 text-flashy-purple text-xs font-heading font-bold px-3 py-1 rounded-full mb-2 uppercase tracking-wide">Meilleure offre</span>
+                            <h3 class="font-heading text-2xl sm:text-3xl font-bold text-flashy-dark">Pack Intégral : les 3 éditions</h3>
+                            <p class="text-gray-600 mt-1">
+                                Drapeaux d'Europe + Monuments du Monde + Symboles Chrétiens.
+                                <span class="font-bold text-flashy-dark">39,90 €</span>
+                                <span class="line-through text-gray-400">au lieu de 44,70 €</span>
+                                — <span class="font-semibold text-green-600">livraison offerte</span>.
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" onclick="Cart.add('pack')" class="w-full sm:w-auto bg-flashy-purple hover:bg-indigo-700 text-white font-heading text-lg font-bold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-all text-center whitespace-nowrap">
+                        🛒 Prendre le Pack
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -460,6 +862,264 @@
             </div>
         </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const SYMBOLS = ["🇫🇷", "🇮🇹", "🇪🇸", "🏛️", "🗿", "🕊️", "⛵", "👑", "🍕", "✝️", "🍷", "🗺️"];
+        const POSITIONS = [
+          { top: "20%", left: "25%", transform: "rotate(-12deg)" },
+          { top: "18%", left: "60%", transform: "rotate(15deg)" },
+          { top: "55%", left: "20%", transform: "rotate(8deg)" },
+          { top: "58%", left: "62%", transform: "rotate(-20deg)" }
+        ];
+        let score = 0;
+        let targetSymbol = "";
+        const card1El = document.getElementById("card-1");
+        const card2El = document.getElementById("card-2");
+        const feedbackEl = document.getElementById("feedback-text");
+        const scoreEl = document.getElementById("score-count");
+        function getRandomItems(array, count) {
+          const shuffled = [...array].sort(() => 0.5 - Math.random());
+          return shuffled.slice(0, count);
+        }
+        function generateRound() {
+          card1El.innerHTML = "";
+          card2El.innerHTML = "";
+          const pool = getRandomItems(SYMBOLS, 7);
+          targetSymbol = pool[0];
+          const card1Symbols = [targetSymbol, pool[1], pool[2], pool[3]].sort(() => 0.5 - Math.random());
+          const card2Symbols = [targetSymbol, pool[4], pool[5], pool[6]].sort(() => 0.5 - Math.random());
+          card1Symbols.forEach((symbol, index) => {
+            card1El.appendChild(createSymbolButton(symbol, POSITIONS[index]));
+          });
+          card2Symbols.forEach((symbol, index) => {
+            card2El.appendChild(createSymbolButton(symbol, POSITIONS[index]));
+          });
+        }
+        function createSymbolButton(symbol, pos) {
+          const btn = document.createElement("button");
+          btn.className = "symbol-btn";
+          btn.innerHTML = symbol;
+          btn.style.top = pos.top;
+          btn.style.left = pos.left;
+          btn.style.transform = pos.transform;
+          btn.addEventListener("click", () => handleSymbolClick(symbol));
+          return btn;
+        }
+        function handleSymbolClick(clickedSymbol) {
+          if (clickedSymbol === targetSymbol) {
+            score++;
+            scoreEl.textContent = score;
+            feedbackEl.textContent = "Bravo ! Paires suivantes...";
+            feedbackEl.style.color = "#16a34a";
+            card1El.classList.add("pulse-success");
+            card2El.classList.add("pulse-success");
+            setTimeout(() => {
+              card1El.classList.remove("pulse-success");
+              card2El.classList.remove("pulse-success");
+              generateRound();
+            }, 400);
+          } else {
+            feedbackEl.textContent = "Raté ! Cherchez bien le symbole commun.";
+            feedbackEl.style.color = "#dc2626";
+            card1El.classList.add("shake-error");
+            card2El.classList.add("shake-error");
+            setTimeout(() => {
+              card1El.classList.remove("shake-error");
+              card2El.classList.remove("shake-error");
+            }, 400);
+          }
+        }
+        generateRound();
+      });
+    </script>
+
+    <script>
+      /* ========================================================
+         PANIER / CHECKOUT — Flashy
+         Site 100% statique (pas de backend) : le paiement réel
+         passe par des Stripe Payment Links (créés sans code dans
+         le Dashboard Stripe → Payment Links → "+ Create link").
+         👉 TODO : remplace les URLs vides ci-dessous par tes vrais
+         liens dès qu'ils existent (un lien par produit + un pour
+         le Pack). Active "Adjustable quantity" sur chaque lien
+         pour que le paramètre ?quantity=N fonctionne.
+         ======================================================== */
+      const PRODUCTS = {
+        drapeaux:  { name: "Drapeaux d'Europe",      price: 14.90, emoji: "🇪🇺" },
+        monuments: { name: "Monuments du Monde",     price: 14.90, emoji: "🏛️" },
+        symboles:  { name: "Symboles Chrétiens",     price: 14.90, emoji: "🕊️" },
+        pack:      { name: "Pack Intégral (3 éditions)", price: 39.90, emoji: "🎁" }
+      };
+      const STRIPE_LINKS = {
+        drapeaux: "https://buy.stripe.com/14AbJ22Lm6v13fz8P70RG01",
+        monuments: "https://buy.stripe.com/dRm4gA5Xy3iP7vP5CV0RG02",
+        symboles: "https://buy.stripe.com/3cI00kbhS06DcQ9aXf0RG03",
+        pack: "https://buy.stripe.com/7sY8wQ0DecTpg2laXf0RG04"
+      };
+      const CART_STORAGE_KEY = "flashy_cart_v1";
+
+      const Cart = {
+        state: {},
+
+        load() {
+          try {
+            this.state = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || {};
+          } catch (e) {
+            this.state = {};
+          }
+        },
+        save() {
+          localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state));
+        },
+        getItems() {
+          return Object.entries(this.state)
+            .filter(([, qty]) => qty > 0)
+            .map(([id, qty]) => ({ id, qty, ...PRODUCTS[id] }));
+        },
+        add(id) {
+          this.state[id] = (this.state[id] || 0) + 1;
+          this.save();
+          this.render();
+          this.open();
+          this.pulseBadge();
+        },
+        remove(id) {
+          delete this.state[id];
+          this.save();
+          this.render();
+        },
+        setQty(id, qty) {
+          if (qty <= 0) {
+            this.remove(id);
+            return;
+          }
+          this.state[id] = qty;
+          this.save();
+          this.render();
+        },
+        swapToPack() {
+          this.state = { pack: 1 };
+          this.save();
+          this.render();
+        },
+        open() {
+          document.getElementById("cart-overlay").classList.add("open");
+          document.getElementById("cart-drawer").classList.add("open");
+          document.body.style.overflow = "hidden";
+        },
+        close() {
+          document.getElementById("cart-overlay").classList.remove("open");
+          document.getElementById("cart-drawer").classList.remove("open");
+          document.body.style.overflow = "";
+        },
+        pulseBadge() {
+          const badge = document.getElementById("cart-count-badge");
+          badge.classList.remove("pop");
+          void badge.offsetWidth;
+          badge.classList.add("pop");
+        },
+        formatPrice(value) {
+          return value.toFixed(2).replace(".", ",") + " €";
+        },
+        render() {
+          const items = this.getItems();
+          const bodyEl = document.getElementById("cart-drawer-body");
+          const subtotalEl = document.getElementById("cart-subtotal");
+          const checkoutBtn = document.getElementById("cart-checkout-btn");
+          const noteEl = document.getElementById("cart-checkout-note");
+          const upsellSlot = document.getElementById("cart-upsell-slot");
+          const badge = document.getElementById("cart-count-badge");
+
+          const totalQty = items.reduce((sum, i) => sum + i.qty, 0);
+          badge.textContent = totalQty;
+          badge.style.display = totalQty > 0 ? "flex" : "none";
+
+          noteEl.style.display = "none";
+
+          if (items.length === 0) {
+            bodyEl.innerHTML = '<div class="cart-empty">Votre panier est vide 🛒<br><span class="text-sm">Ajoutez une édition pour commencer !</span></div>';
+            subtotalEl.textContent = this.formatPrice(0);
+            checkoutBtn.disabled = true;
+            upsellSlot.innerHTML = "";
+            return;
+          }
+
+          checkoutBtn.disabled = false;
+
+          bodyEl.innerHTML = items.map(item => `
+            <div class="cart-line" data-id="${item.id}">
+              <div class="cart-line-emoji">${item.emoji}</div>
+              <div class="flex-1">
+                <div class="font-semibold text-flashy-dark text-sm">${item.name}</div>
+                <div class="text-xs text-gray-400">${this.formatPrice(item.price)} / unité</div>
+                <div class="flex items-center gap-3 mt-1.5">
+                  <div class="cart-qty-stepper">
+                    <button type="button" onclick="Cart.setQty('${item.id}', ${item.qty - 1})" aria-label="Diminuer">−</button>
+                    <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
+                    <button type="button" onclick="Cart.setQty('${item.id}', ${item.qty + 1})" aria-label="Augmenter">+</button>
+                  </div>
+                  <span class="cart-remove-btn" onclick="Cart.remove('${item.id}')">Retirer</span>
+                </div>
+              </div>
+              <div class="font-heading font-bold text-flashy-dark whitespace-nowrap">${this.formatPrice(item.price * item.qty)}</div>
+            </div>
+          `).join("");
+
+          const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
+          subtotalEl.textContent = this.formatPrice(subtotal);
+
+          // Upsell : encourager le passage au Pack Intégral
+          const singleIds = ["drapeaux", "monuments", "symboles"];
+          const hasPack = !!this.state.pack;
+          const singlesInCart = singleIds.filter(id => this.state[id] > 0);
+
+          if (!hasPack && singlesInCart.length === 3) {
+            const singlesTotal = singleIds.reduce((sum, id) => sum + PRODUCTS[id].price, 0);
+            const savings = this.formatPrice(singlesTotal - PRODUCTS.pack.price);
+            upsellSlot.innerHTML = `<div class="cart-upsell" onclick="Cart.swapToPack()">🎁 Basculez sur le Pack Intégral (39,90 €) et économisez ${savings} + livraison offerte !</div>`;
+          } else if (!hasPack && singlesInCart.length === 2) {
+            upsellSlot.innerHTML = `<div class="cart-upsell">💡 Ajoutez la 3ᵉ édition pour débloquer le Pack Intégral et économiser 4,80 € !</div>`;
+          } else {
+            upsellSlot.innerHTML = "";
+          }
+        },
+        checkout() {
+          const items = this.getItems();
+          if (items.length === 0) return;
+
+          if (items.length === 1) {
+            this.redirectToStripe(items[0].id, items[0].qty);
+            return;
+          }
+
+          // Panier mixte (plusieurs éditions différentes) : un Payment
+          // Link Stripe correspond à un seul produit. On guide l'achat
+          // vers le Pack (s'il correspond) ou vers un paiement par ligne.
+          const noteEl = document.getElementById("cart-checkout-note");
+          noteEl.textContent = "Plusieurs éditions différentes détectées : réglez chaque édition séparément ci-dessus (bientôt), ou optez pour le Pack Intégral en un clic.";
+          noteEl.style.display = "block";
+        },
+        redirectToStripe(id, qty) {
+          const link = STRIPE_LINKS[id];
+          if (!link) {
+            const noteEl = document.getElementById("cart-checkout-note");
+            noteEl.textContent = "⚠️ Le paiement en ligne arrive très bientôt ! En attendant, contactez-nous pour finaliser votre commande.";
+            noteEl.style.display = "block";
+            return;
+          }
+          window.location.href = qty > 1 ? `${link}?quantity=${qty}` : link;
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        Cart.load();
+        Cart.render();
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") Cart.close();
+        });
+      });
+    </script>
 
 </body>
 </html>
